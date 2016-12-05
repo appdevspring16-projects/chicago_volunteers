@@ -63,8 +63,8 @@
         <input type="text" id="number_of_volunteers_required" name="number_of_volunteers_required" placeholder="Number of volunteers required" class="form-control" value="<%= @project.number_of_volunteers_required %>">
       </div>
 
-      
-      
+
+        <input type="hidden" name="organization_id" value="<%= current_organization.id %>">
 
       <button class="btn btn-warning">
         Update Project

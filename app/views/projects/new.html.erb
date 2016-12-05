@@ -63,6 +63,14 @@
         <input type="text" id="number_of_volunteers_required" name="number_of_volunteers_required" placeholder="Number of volunteers required" class="form-control" value="<%= @project.number_of_volunteers_required %>">
       </div>
 
+      <div class="form-group">
+        <label for="address" class="control-label">
+          Address
+        </label>
+
+        <input type="string" id="fieldname" name="fieldname" placeholder="Type the address" class="form-control" value="<%= @project.fieldname %>">
+      </div>
+
       <!-- Label and input for organization_id -->
       <input type="hidden" name="organization_id" value="<%= current_organization.id %>">
 

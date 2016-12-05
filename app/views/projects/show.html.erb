@@ -36,7 +36,16 @@
       <dd>
         <% if @project.organization.present? %>
           <a href="/organizations/<%= @project.organization_id %>">
-            <%= @project.organization.email %>
+            <%= @project.organization.name %>
+          </a>
+        <% end %>
+      </dd>
+
+      <dt>Address</dt>
+      <dd>
+        <% if @project.fieldname.present? %>
+          <a href="/organizations/<%= @project.organization_id %>">
+            <%= @project.organization.fieldname %>
           </a>
         <% end %>
       </dd>

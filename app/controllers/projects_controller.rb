@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_action :current_organization_must_be_project_user, :only => [:edit, :update, :destroy]
+  before_action :current_organization_must_be_project_organization, :only => [:edit, :update, :destroy]
 
   def current_organization_must_be_project_organization
     project = Project.find(params[:id])
@@ -36,6 +36,7 @@ class ProjectsController < ApplicationController
     @project.day_id = params[:day_id]
     @project.description = params[:description]
     @project.number_of_volunteers_required = params[:number_of_volunteers_required]
+    @project.fieldname = params[:address]
     @project.organization_id = params[:organization_id]
 
     save_status = @project.save
