@@ -47,7 +47,7 @@
       <a href="/projects" class="btn btn-primary">
         Back
       </a>
-      <% if current_user == @project.organization %>
+      <% if current_organization == @project.organization %>
         <a href="/projects/<%= @project.id %>/edit" class="btn btn-warning">
           Edit
         </a>

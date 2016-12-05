@@ -1,10 +1,10 @@
 class ProjectsController < ApplicationController
-  before_action :current_user_must_be_project_user, :only => [:edit, :update, :destroy]
+  before_action :current_organization_must_be_project_user, :only => [:edit, :update, :destroy]
 
-  def current_user_must_be_project_organization
+  def current_organization_must_be_project_organization
     project = Project.find(params[:id])
 
-    unless current_user == project.organization
+    unless current_organization == project.organization
       redirect_to :back, :alert => "You are not authorized for that."
     end
   end
