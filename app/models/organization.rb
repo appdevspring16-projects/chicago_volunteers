@@ -5,6 +5,8 @@ class Organization < ApplicationRecord
 
   # Validations
 
+  validates :name, :presence => true
+
   validates :website, :presence => true
 
   # Include default devise modules. Others available are:
