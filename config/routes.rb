@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root :to => "projects#index"
   # Routes for the Day resource:
   # CREATE
   get "/days/new", :controller => "days", :action => "new"
