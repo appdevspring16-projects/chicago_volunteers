@@ -1,0 +1,1 @@
+{"name":"Chicago Volunteers","repository":"https://github.com/egeffroy/chicago_volunteers","env":{"CLOUDINARY_CLOUD_NAME":{"required":true},"CLOUDINARY_API_KEY":{"required":true},"CLOUDINARY_API_SECRET":{"required":true},"ROLLBAR_ACCESS_TOKEN":{"required":true}}}
