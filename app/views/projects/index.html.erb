@@ -1,7 +1,10 @@
 <div class="page-header">
   <h1>
     Projects
-    <a href="/projects/new" class="btn btn-lg btn-success">New Project</a>
+      <% if current_organization != nil %>
+      <a href="/projects/new" class="btn btn-lg btn-success">New Project</a>
+      <% else %>
+      <% end %>
   </h1>
 </div><div class="row mb-1">
   <div class="col-md-12">
@@ -129,7 +132,7 @@
         </td>
         <td>
           <a href="/projects/<%= project.id %>" class="btn btn-primary">Show</a>
-          
+
           <% if current_organization == project.organization %>
             <a href="/projects/<%= project.id %>/edit" class="btn btn-warning">Edit</a>
             <a href="/delete_project/<%= project.id %>" class="btn btn-danger" rel="nofollow">Delete</a>

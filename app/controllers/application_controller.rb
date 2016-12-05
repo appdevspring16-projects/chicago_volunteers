@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  before_action :authenticate_organization!
+  before_action :authenticate_organization!, :except => [:show, :index]
 
   protect_from_forgery with: :exception
 
