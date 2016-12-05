@@ -5,6 +5,8 @@ class Project < ApplicationRecord
 
   # Validations
 
+  validates :location_id, :presence => true
+
   validates :name, :presence => true
 
   validates :number_of_volunteers_required, :presence => true
