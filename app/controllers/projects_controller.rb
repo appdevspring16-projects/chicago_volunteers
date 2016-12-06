@@ -19,8 +19,8 @@ class ProjectsController < ApplicationController
   def show
     @project = Project.find(params[:id])
 
-    render("projects/show.html.erb")
   end
+
 
   def new
     @project = Project.new
@@ -36,7 +36,7 @@ class ProjectsController < ApplicationController
     @project.day_id = params[:day_id]
     @project.description = params[:description]
     @project.number_of_volunteers_required = params[:number_of_volunteers_required]
-    @project.fieldname = params[:address]
+    @project.address = params[:address]
     @project.organization_id = params[:organization_id]
 
     save_status = @project.save
@@ -69,6 +69,7 @@ class ProjectsController < ApplicationController
     @project.day_id = params[:day_id]
     @project.description = params[:description]
     @project.number_of_volunteers_required = params[:number_of_volunteers_required]
+    @project.address = params[:address]
     @project.organization_id = params[:organization_id]
 
     save_status = @project.save
