@@ -1,156 +1,60 @@
 <div class="page-header">
   <h1>
-    Projects
-      <% if current_organization != nil %>
-      <a href="/projects/new" class="btn btn-lg btn-success">New Project</a>
-      <% else %>
-      <% end %>
+    Projects (Chronological Order)
+    <% if current_organization != nil %>
+    <a href="/projects/new" class="btn btn-lg btn-success">New Project</a>
+    <% else %>
+    <% end %>
   </h1>
   <i>
     Below is a list of open projects planned to occur in the next 60 days.
-  <% if current_organization != nil %>
-  <br>As an organization, you can <b>create</b>, <b>edit</b>, <b>delete</b> your projects, or mark them <b>filled</b>.
-  <br>Projects that have filled their capacity will still appear in that list, and you can revert the action later.
-  <% else %>
-  <br>If you are interested in volunteering for one of those projects, please click on "Show" for more information.
-  <br>If you are an organization interested in posting volunteering opportunities, please sign up using the link in the top right corner.
-  <% end %>
-</i>
-</div><div class="row mb-1">
-  <div class="col-md-12">
-    <%= search_form_for @q, :class => "collapse", :id => "projects_filters" do |f| %>
-      <p class="lead">Narrow results:</p>
-
-        <div class="form-group">
-    <%= f.label :name_cont, "Name contains" %>
-    <%= f.text_field :name_cont, :class => "form-control", :placeholder => "Name contains" %>
-  </div>
-
-<div class="form-group">
-    <%= f.label :number_of_volunteers_required_cont, "Number of volunteers required contains" %>
-    <%= f.text_field :number_of_volunteers_required_cont, :class => "form-control", :placeholder => "Number of volunteers required contains" %>
-  </div>
-
-<div class="form-group">
-    <%= f.label :description_cont, "Description contains" %>
-    <%= f.text_field :description_cont, :class => "form-control", :placeholder => "Description contains" %>
-  </div>
-
-<div class="form-group">
-          <%= f.label :created_at, "Created at" %>
-          <div class="row">
-            <div class='col-md-6 mb-1'>
-              <div class='input-group date' id='created_atgteqPicker'>
-                  <%= f.text_field :created_at_gteq, :class => "form-control", :placeholder => "Created at greater than or equal to" %>
-                  <span class="input-group-addon">
-                      <span class="glyphicon glyphicon-calendar"></span>
-                  </span>
-              </div>
-            </div>
-
-            <div class='col-md-6'>
-              <div class='input-group date' id='created_atlteqPicker'>
-                  <%= f.text_field :created_at_lteq, :class => "form-control", :placeholder => "Created at less than or equal to" %>
-                  <span class="input-group-addon">
-                      <span class="glyphicon glyphicon-calendar"></span>
-                  </span>
-              </div>
-            </div>
-          </div>
-      </div>
-      <script type="text/javascript">
-          $(function () {
-              $('#created_atgteqPicker').datetimepicker({
-                  format: 'YYYY-MM-DD hh:mm:SS'
-              });
-              $('#created_atlteqPicker').datetimepicker({
-                  useCurrent: false,
-                  format: 'YYYY-MM-DD hh:mm:SS'
-              });
-              $('#created_atgteqPicker').on("dp.change", function (e) {
-                  $('#created_atlteqPicker').data("DateTimePicker").minDate(e.date);
-              });
-              $('#created_atlteqPicker').on("dp.change", function (e) {
-                  $('#created_atgteqPicker').data("DateTimePicker").maxDate(e.date);
-              });
-          });
-      </script>
-
-        <div class="form-group">
-      <%= f.label :organization_email_cont, "Organization email contains" %>
-      <%= f.text_field :organization_email_cont, :class => "form-control", :placeholder => "Organization email contains" %>
-    </div>
-
-<div class="form-group">
-      <%= f.label :location_neighborhood_cont, "Location neighborhood contains" %>
-      <%= f.text_field :location_neighborhood_cont, :class => "form-control", :placeholder => "Location neighborhood contains" %>
-    </div>
-
-<div class="form-group">
-      <%= f.label :day_day_cont, "Day day contains" %>
-      <%= f.text_field :day_day_cont, :class => "form-control", :placeholder => "Day day contains" %>
-    </div>
-
-      <%= f.submit :class => "btn btn-primary btn-block mb-1" %>
-
-      <a href="/projects" class="btn btn-default btn-block mb-1">Clear filters</a>
+    <% if current_organization != nil %>
+    <br>As an organization, you can <b>create</b>, <b>edit</b>, <b>delete</b> your projects, or mark them <b>filled</b>.
+    <br>Projects that have filled their capacity will still appear in that list, and you can revert the action later.
+    <% else %>
+    <br>If you are interested in volunteering for one of those projects, please click on "Show" for more information.
+    <br>If you are an organization interested in posting volunteering opportunities, please sign up using the link in the top right corner.
     <% end %>
-    <a class="btn btn-default btn-block mb-1" data-toggle="collapse" href="#projects_filters">
-      Show Filters
-    </a>
-  </div>
+  </i>
 </div>
+
+<% @projects.each do |project| %>
 
 <div class="row">
-  <div class="col-md-12">
-    <table class="table table-striped table-hover">
-      <tr>
-        <th>Name</th>
-        <th>Location</th>
-        <th>Day</th>
-        <th>Description</th>
-        <th>Team Size</th>
-        <th>Organization</th>
-        <th>Actions</th>
-      </tr>
+  <div class="row">
+    <div class="col-sm-offset-2 col-sm-8">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            <small><%= project.day.day %></small><br> <%= project.name %>
+          </h3>
+        </div>
+      </div>
+    </div>
+  </div>
 
-      <% @projects.each do |project| %>
-      <tr>
-        <td><%= project.name %></td>
-        <td>
-          <% if project.location.present? %>
-            <a href="/locations/<%= project.location.id %>">
-              <%= project.location.neighborhood %>
-            </a>
-          <% end %>
-        </td>
-        <td>
-          <% if project.day.present? %>
-            <a href="/days/<%= project.day.id %>">
-              <%= project.day.day %>
-            </a>
-          <% end %>
-        </td>
-        <td><%= project.description %></td>
-        <td><%= project.number_of_volunteers_required %></td>
-        <td>
-          <% if project.organization.present? %>
-            <a href="/organizations/<%= project.organization.id %>">
-              <%= project.organization.name %>
-            </a>
-          <% end %>
-        </td>
-        <td>
-          <a href="/projects/<%= project.id %>" class="btn btn-primary"><i class="fa fa-search-plus" aria-hidden="true"></a><br>
+  <div class="row">
+    <div class="col-sm-offset-2 col-sm-3">
+      <div class="hovereffect">
+        <img src="<%= project.organization.logo %>" class="img-fluid center-block" alt="Responsive image" height=150px>
+      </div>
+    </div>
+    <div class="col-sm-offset-0 col-sm-5">
+      <small>
+        Number of volunteers: <%= project.number_of_volunteers_required %><br>
+        Location: <a href="/locations/<%= project.location.id %>"><%= project.location.neighborhood %></a><br>
+        <%= project.description %><br><br>
+        <a href="/projects/<%= project.id %>" class="btn btn-primary btn-sm">Learn More & Sign-Up</a>
           <% if current_organization == project.organization %>
-            <a href="/projects/<%= project.id %>/edit" class="btn btn-warning"><i class="fa fa-edit" aria-hidden="true"></i></a>
-            <a href="/organizations/<%= project.organization.id %>" class="btn btn-info"><i class="fa fa-check-square-o" aria-hidden="true"></i></a>
-            <a href="/delete_project/<%= project.id %>" class="btn btn-danger" rel="nofollow"><i class="fa fa-trash" aria-hidden="true"></i></a>
+          <a href="/projects/<%= project.id %>/edit" class="btn btn-warning btn-sm">Edit</i></a>
+          <a href="/organizations/<%= project.organization.id %>" class="btn btn-info btn-sm">Mark Complete</i></a>
+          <a href="/delete_project/<%= project.id %>" class="btn btn-danger btn-sm" rel="nofollow">Delete</i></a>
           <% end %>
-        </td>
-      </tr>
-      <% end %>
-    </table>
-    <%= paginate @projects, theme: 'twitter-bootstrap-4' %>
+      </small>
+    </div>
+
   </div>
 </div>
+<br>
+<br>
+<% end %>
