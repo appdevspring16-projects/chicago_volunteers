@@ -6,14 +6,16 @@
       <% else %>
       <% end %>
   </h1>
-  Below is a list of open projects planned to occur in the next 60 days.
+  <i>
+    Below is a list of open projects planned to occur in the next 60 days.
   <% if current_organization != nil %>
-  <br>As an organization, you can modify your projects or mark them complete.
+  <br>As an organization, you can <b>create</b>, <b>edit</b>, <b>delete</b> your projects, or mark them <b>filled</b>.
   <br>Projects that have filled their capacity will still appear in that list, and you can revert the action later.
   <% else %>
   <br>If you are interested in volunteering for one of those projects, please click on "Show" for more information.
   <br>If you are an organization interested in posting volunteering opportunities, please sign up using the link in the top right corner.
   <% end %>
+</i>
 </div><div class="row mb-1">
   <div class="col-md-12">
     <%= search_form_for @q, :class => "collapse", :id => "projects_filters" do |f| %>

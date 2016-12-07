@@ -1,28 +1,12 @@
 <div class="page-header">
-  <h3>Location #<%= @location.id %></h3>
+  <h3><%= @location.neighborhood %></h3>
+  <i>
+    Below is a list of projects taking place in <%= @location.neighborhood %>.
+    <br>
+    Please click on each project to get more information.
+</i>
 </div>
 
-<div class="row">
-  <div class="col-md-12 mb-2">
-    <dl class="dl-horizontal">
-      <dt>Neighborhood</dt>
-      <dd><%= @location.neighborhood %></dd>
-
-    </dl>
-
-    <div class="btn-group btn-group-justified">
-      <a href="/locations" class="btn btn-primary">
-        Back
-      </a>
-      <a href="/locations/<%= @location.id %>/edit" class="btn btn-warning">
-        Edit
-      </a>
-      <a href="/delete_location/<%= @location.id %>" class="btn btn-danger" rel="nofollow">
-        Delete
-      </a>
-    </div>
-  </div>
-</div>
 
 <!-- A Location has many projects -->
 
@@ -52,7 +36,7 @@
         </li>
       <% end %>
 
-      
+
     </form>
       </li>
     </ul>

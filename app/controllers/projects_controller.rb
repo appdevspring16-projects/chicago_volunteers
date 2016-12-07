@@ -88,6 +88,20 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def filled
+    @project = Project.find(params[:id])
+    @project.filled = 1
+    @project.save
+    render("projects/index.html.erb")
+  end
+
+  def unfilled
+    @project = Project.find(params[:id])
+    @project.filled = 0
+    @project.save
+    render("projects/index.html.erb")
+  end
+
   def destroy
     @project = Project.find(params[:id])
 
