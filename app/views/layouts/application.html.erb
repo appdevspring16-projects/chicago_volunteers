@@ -40,8 +40,12 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li><a href="/projects">Projects</a></li>
-          <li><a href="/organizations">Organizations</a></li>
+          <li><a href="/projects">All Projects</a></li>
+          <li><a href="/organizations">List of Organizations</a></li>
+            <% if current_organization != nil %>
+          <li><a href="/organizations/<%= current_organization.id %>">My Organization's Page</a></li>
+            <% else %>
+            <% end %>
         </ul>
 
         <ul class="nav navbar-nav navbar-right">

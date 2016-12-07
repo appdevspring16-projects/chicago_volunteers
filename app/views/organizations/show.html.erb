@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h3>Organization #<%= @organization.id %></h3>
+  <h3><%= @organization.name %></h3>
 </div>
 
 <div class="row">
@@ -7,9 +7,6 @@
     <dl class="dl-horizontal">
       <dt>Email</dt>
       <dd><%= @organization.email %></dd>
-
-      <dt>Password</dt>
-      <dd><%= @organization.password %></dd>
 
       <dt>Name</dt>
       <dd><%= @organization.name %></dd>

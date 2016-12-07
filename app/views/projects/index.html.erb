@@ -6,6 +6,13 @@
       <% else %>
       <% end %>
   </h1>
+  Below is a list of open projects planned to occur in the next 60 days.
+  <% if current_organization != nil %>
+  <br>As an organization, you can modify your projects or mark them complete.
+  <% else %>
+  <br>If you are interested in volunteering for one of those projects, please click on "Show" for more information.
+  <br>If you are an organization interested in posting volunteering opportunities, please sign up using the link in the top right corner.
+  <% end %>
 </div><div class="row mb-1">
   <div class="col-md-12">
     <%= search_form_for @q, :class => "collapse", :id => "projects_filters" do |f| %>
@@ -135,6 +142,7 @@
 
           <% if current_organization == project.organization %>
             <a href="/projects/<%= project.id %>/edit" class="btn btn-warning">Edit</a>
+            <a href="/organizations/<%= project.organization.id %>" class="btn btn-info">Filled</a>
             <a href="/delete_project/<%= project.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
           <% end %>
         </td>
