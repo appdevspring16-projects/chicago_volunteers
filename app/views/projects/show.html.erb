@@ -11,18 +11,18 @@
       <dt>Location</dt>
       <dd>
         <% if @project.location.present? %>
-          <a href="/locations/<%= @project.location_id %>">
-            <%= @project.location.neighborhood %>
-          </a>
+        <a href="/locations/<%= @project.location_id %>">
+          <%= @project.location.neighborhood %>
+        </a>
         <% end %>
       </dd>
 
       <dt>Day</dt>
       <dd>
         <% if @project.day.present? %>
-          <a href="/days/<%= @project.day_id %>">
-            <%= @project.day.day %>
-          </a>
+        <a href="/days/<%= @project.day_id %>">
+          <%= @project.day.day %>
+        </a>
         <% end %>
       </dd>
 
@@ -35,32 +35,28 @@
       <dt>Organization</dt>
       <dd>
         <% if @project.organization.present? %>
-          <a href="/organizations/<%= @project.organization_id %>">
-            <%= @project.organization.name %>
-          </a>
+        <a href="/organizations/<%= @project.organization_id %>">
+          <%= @project.organization.name %>
+        </a>
         <% end %>
       </dd>
 
       <dt>Address</dt>
       <dd>
-          <%= @project.address %>
+        <%= @project.address %>
       </dd>
 
-<dd>
+      <dd>
 
-          <div id="map" style="width:auto;height:400px;background:white"></div>
+        <div>
+          <iframe
+          frameborder="0" style="border:0; width: 100%; height: 300px"
+          src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA7LQxvUQoh4RY8Ns4hBZJyCHeHV7Ebpyc
+          &q=<%= @project.address %>" allowfullscreen>
+        </iframe>
+      </div>
 
-          <script>
-          function myMap() {
-            var mapCanvas = document.getElementById("map");
-            var mapOptions = {
-              center: new google.maps.LatLng(1, -0.2), zoom: 10
-            };
-            var map = new google.maps.Map(mapCanvas, mapOptions);
-          }
-          </script>
 
-          <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCSEy_tp-gDA7iYevUIGvBtDf0r90JFEMM&callback=myMap"></script>
     </dd>
 
     <% if current_organization != nil %>
@@ -68,26 +64,26 @@
     <% else %>
     <dt>Sign-Up</dt>
     <dd>
-        <a href="mailto:<%= @project.organization.email %>?subject=Application for the <%= @project.name %> project&body=Below is my application for the <%= @project.name %> scheduled on <%= @project.day.day %>.">Send Application</a>
+      <a href="mailto:<%= @project.organization.email %>?subject=Application for the <%= @project.name %> project&body=Below is my application for the <%= @project.name %> scheduled on <%= @project.day.day %>.">Send Application</a>
     </dd>
     <% end %>
 
 
 
-    </dl>
+  </dl>
 
-    <div class="btn-group btn-group-justified">
-      <a href="/projects" class="btn btn-primary">
-        Back
-      </a>
-      <% if current_organization == @project.organization %>
-        <a href="/projects/<%= @project.id %>/edit" class="btn btn-warning">
-          Edit
-        </a>
-        <a href="/delete_project/<%= @project.id %>" class="btn btn-danger" rel="nofollow">
-          Delete
-        </a>
-      <% end %>
-    </div>
+  <div class="btn-group btn-group-justified">
+    <a href="/projects" class="btn btn-primary">
+      Back
+    </a>
+    <% if current_organization == @project.organization %>
+    <a href="/projects/<%= @project.id %>/edit" class="btn btn-warning">
+      Edit
+    </a>
+    <a href="/delete_project/<%= @project.id %>" class="btn btn-danger" rel="nofollow">
+      Delete
+    </a>
+    <% end %>
   </div>
+</div>
 </div>

@@ -141,12 +141,11 @@
           <% end %>
         </td>
         <td>
-          <a href="/projects/<%= project.id %>" class="btn btn-primary">Show</a>
-
+          <a href="/projects/<%= project.id %>" class="btn btn-primary"><i class="fa fa-search-plus" aria-hidden="true"></a><br>
           <% if current_organization == project.organization %>
-            <a href="/projects/<%= project.id %>/edit" class="btn btn-warning">Edit</a>
-            <a href="/organizations/<%= project.organization.id %>" class="btn btn-info">Filled</a>
-            <a href="/delete_project/<%= project.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+            <a href="/projects/<%= project.id %>/edit" class="btn btn-warning"><i class="fa fa-edit" aria-hidden="true"></i></a>
+            <a href="/organizations/<%= project.organization.id %>" class="btn btn-info"><i class="fa fa-check-square-o" aria-hidden="true"></i></a>
+            <a href="/delete_project/<%= project.id %>" class="btn btn-danger" rel="nofollow"><i class="fa fa-trash" aria-hidden="true"></i></a>
           <% end %>
         </td>
       </tr>
