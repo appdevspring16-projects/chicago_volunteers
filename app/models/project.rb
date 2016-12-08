@@ -23,4 +23,8 @@ class Project < ApplicationRecord
 
   validates :organization_id, :presence => true
 
+  validates :illustration, :presence => true
+
+  default_scope { order("day_id") }
+
 end

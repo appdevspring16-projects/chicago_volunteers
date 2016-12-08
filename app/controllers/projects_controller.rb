@@ -37,6 +37,7 @@ class ProjectsController < ApplicationController
     @project.description = params[:description]
     @project.number_of_volunteers_required = params[:number_of_volunteers_required]
     @project.address = params[:address]
+    @project.address = params[:illustration]
     @project.organization_id = params[:organization_id]
 
     save_status = @project.save
@@ -70,6 +71,7 @@ class ProjectsController < ApplicationController
     @project.description = params[:description]
     @project.number_of_volunteers_required = params[:number_of_volunteers_required]
     @project.address = params[:address]
+    @project.illustration = params[:illustration]
     @project.organization_id = params[:organization_id]
 
     save_status = @project.save

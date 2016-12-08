@@ -33,7 +33,9 @@
     <div class="col-sm-offset-0 col-sm-3">
       <small>
         Number of projects: <%= organization.projects.count %> <br>
-        Member since <%= organization.created_at.strftime("%d %b. %Y") %>
+        Member since <%= organization.created_at.strftime("%d %b. %Y") %><br>
+        <%= truncate(organization.description, :length => 120, :omission => '... (continued)') %><br><br>
+        <a href="/organizations/<%= organization.id %>" class="btn btn-primary btn-sm">Learn More</a>
       </small>
     </div>
   </div>

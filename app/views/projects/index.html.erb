@@ -26,7 +26,7 @@
       <div class="panel panel-default">
         <div class="panel-heading">
           <h3 class="panel-title">
-            <small><%= project.day.day %></small><br> <%= project.name %>
+            <small><%= project.day.day %></small><br> <%= project.name %> (<a href="/organizations/<%= project.organization.id %>"><%= project.organization.name %></a>)
           </h3>
         </div>
       </div>
@@ -36,19 +36,19 @@
   <div class="row">
     <div class="col-sm-offset-2 col-sm-3">
       <div class="hovereffect">
-        <img src="<%= project.organization.logo %>" class="img-fluid center-block" alt="Responsive image" height=150px>
+        <img src="<%= project.illustration %>" class="img-fluid center-block" alt="Responsive image" height=150px>
       </div>
     </div>
     <div class="col-sm-offset-0 col-sm-5">
       <small>
-        Number of volunteers: <%= project.number_of_volunteers_required %><br>
+        Number of Volunteers: <%= project.number_of_volunteers_required %><br>
         Location: <a href="/locations/<%= project.location.id %>"><%= project.location.neighborhood %></a><br>
-        <%= project.description %><br><br>
+        <%= truncate(project.description, :length => 200, :omission => '... (continued)') %><br><br>
         <a href="/projects/<%= project.id %>" class="btn btn-primary btn-sm">Learn More & Sign-Up</a>
           <% if current_organization == project.organization %>
           <a href="/projects/<%= project.id %>/edit" class="btn btn-warning btn-sm">Edit</i></a>
           <a href="/organizations/<%= project.organization.id %>" class="btn btn-info btn-sm">Mark Complete</i></a>
-          <a href="/delete_project/<%= project.id %>" class="btn btn-danger btn-sm" rel="nofollow">Delete</i></a>
+          <a href="/delete_project/<%= project.id %>" class="btn btn-default btn-sm" rel="nofollow">Delete</i></a>
           <% end %>
       </small>
     </div>

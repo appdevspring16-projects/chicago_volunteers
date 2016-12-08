@@ -71,6 +71,14 @@
         <input type="string" id="address" name="address" placeholder="Type the address" class="form-control" value="<%= @project.address %>">
       </div>
 
+      <div class="form-group">
+        <label for="illustration" class="control-label">
+          Project Illustration
+        </label>
+
+        <input type="string" id="illustration" name="illustration" placeholder="Illustration URL" class="form-control" value="<%= @project.illustration %>">
+      </div>
+
       <!-- Label and input for organization_id -->
       <input type="hidden" name="organization_id" value="<%= current_organization.id %>">
 

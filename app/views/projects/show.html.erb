@@ -1,21 +1,11 @@
 <div class="page-header">
-  <h3><%= @project.name %></h3>
+  <h2><%= @project.name %> (<%= @project.organization.name %>)</h2>
 </div>
 
 <div class="row">
   <div class="col-md-12 mb-2">
     <dl class="dl-horizontal">
-      <dt>Name</dt>
-      <dd><%= @project.name %></dd>
 
-      <dt>Location</dt>
-      <dd>
-        <% if @project.location.present? %>
-        <a href="/locations/<%= @project.location_id %>">
-          <%= @project.location.neighborhood %>
-        </a>
-        <% end %>
-      </dd>
 
       <dt>Day</dt>
       <dd>
@@ -25,26 +15,16 @@
         </a>
         <% end %>
       </dd>
-
+<br>
       <dt>Description</dt>
       <dd><%= @project.description %></dd>
+<br>
+      <dt>Team</dt>
+      <dd><%= @project.number_of_volunteers_required %> volunteers</dd>
 
-      <dt>Number of volunteers required</dt>
-      <dd><%= @project.number_of_volunteers_required %></dd>
-
-      <dt>Organization</dt>
-      <dd>
-        <% if @project.organization.present? %>
-        <a href="/organizations/<%= @project.organization_id %>">
-          <%= @project.organization.name %>
-        </a>
-        <% end %>
-      </dd>
-
+<br>
       <dt>Address</dt>
-      <dd>
-        <%= @project.address %>
-      </dd>
+
 
       <dd>
 
@@ -58,13 +38,16 @@
 
 
     </dd>
-
+<br>
     <% if current_organization != nil %>
-
+<dd>
+<a href="/organizations/<%= @project.organization_id %>" class="btn btn-primary btn-sm">See Other Projects From <%= @project.organization.name %></a>
+  </dd>
     <% else %>
-    <dt>Sign-Up</dt>
+
     <dd>
-      <a href="mailto:<%= @project.organization.email %>?subject=Application for the <%= @project.name %> project&body=Below is my application for the <%= @project.name %> scheduled on <%= @project.day.day %>.">Send Application</a>
+      <a href="mailto:<%= @project.organization.email %>?subject=Application for the <%= @project.name %> project&body=Below is my application for the <%= @project.name %> scheduled on <%= @project.day.day %>." class="btn btn-primary btn-sm">Send Application</a>
+      <a href="/organizations/<%= @project.organization_id %>" class="btn btn-default btn-sm">See Other Projects From <%= @project.organization.name %></a>
     </dd>
     <% end %>
 
