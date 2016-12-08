@@ -41,7 +41,7 @@
     </div>
     <div class="col-sm-offset-0 col-sm-5">
       <small>
-        <% if project.filled != 0 %>
+        <% if project.filled = 1 %>
         Number of Volunteers: <%= project.number_of_volunteers_required %><br>
         Location: <a href="/locations/<%= project.location.id %>"><%= project.location.neighborhood %></a><br>
         <%= truncate(project.description, :length => 200, :omission => '... (continued)') %><br><br>

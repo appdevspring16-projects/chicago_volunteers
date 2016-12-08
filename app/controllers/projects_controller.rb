@@ -113,7 +113,8 @@ class ProjectsController < ApplicationController
     else
       redirect_back(:fallback_location => "/", :notice => "Project marked unfilled.")
     end
-    end
+
+  end
 
   def destroy
     @project = Project.find(params[:id])
