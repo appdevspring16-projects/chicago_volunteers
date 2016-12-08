@@ -90,19 +90,30 @@ class ProjectsController < ApplicationController
     end
   end
 
-  def filled
+  def mark_filled
     @project = Project.find(params[:id])
     @project.filled = 1
     @project.save
-    render("projects/index.html.erb")
+
+    if URI(request.referer).path == "/projects/#{@project.id}"
+      redirect_to("/", :notice => "Project market filled.")
+    else
+      redirect_back(:fallback_location => "/", :notice => "Project market filled.")
+    end
+
   end
 
-  def unfilled
+  def mark_unfilled
     @project = Project.find(params[:id])
     @project.filled = 0
     @project.save
-    render("projects/index.html.erb")
-  end
+
+    if URI(request.referer).path == "/projects/#{@project.id}"
+      redirect_to("/", :notice => "Project marked unfilled.")
+    else
+      redirect_back(:fallback_location => "/", :notice => "Project marked unfilled.")
+    end
+    end
 
   def destroy
     @project = Project.find(params[:id])

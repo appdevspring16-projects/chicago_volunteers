@@ -41,15 +41,30 @@
     </div>
     <div class="col-sm-offset-0 col-sm-5">
       <small>
+        <% if project.filled != 0 %>
         Number of Volunteers: <%= project.number_of_volunteers_required %><br>
         Location: <a href="/locations/<%= project.location.id %>"><%= project.location.neighborhood %></a><br>
         <%= truncate(project.description, :length => 200, :omission => '... (continued)') %><br><br>
         <a href="/projects/<%= project.id %>" class="btn btn-primary btn-sm">Learn More & Sign-Up</a>
-          <% if current_organization == project.organization %>
-          <a href="/projects/<%= project.id %>/edit" class="btn btn-warning btn-sm">Edit</i></a>
-          <a href="/organizations/<%= project.organization.id %>" class="btn btn-info btn-sm">Mark Complete</i></a>
-          <a href="/delete_project/<%= project.id %>" class="btn btn-default btn-sm" rel="nofollow">Delete</i></a>
-          <% end %>
+        <% if current_organization == project.organization %>
+        <a href="/projects/<%= project.id %>/edit" class="btn btn-warning btn-sm">Edit</i></a>
+        <a href="/projects/<%= project.id %>/mark_unfilled" class="btn btn-info btn-sm">Mark Unfilled</i></a>
+        <a href="/delete_project/<%= project.id %>" class="btn btn-default btn-sm" rel="nofollow">Delete</i></a>
+        <% else %>
+        <% end %>
+        <% else %>
+        <strike>
+        Number of Volunteers: <%= project.number_of_volunteers_required %><br>
+        Location: <a href="/locations/<%= project.location.id %>"><%= project.location.neighborhood %></a>
+        <%= truncate(project.description, :length => 200, :omission => '... (continued)') %></strike><br><br>
+        This project has been marked filled by its organizer.</a>
+        <% if current_organization == project.organization %><br><br>
+        <a href="/projects/<%= project.id %>/edit" class="btn btn-warning btn-sm">Edit</i></a>
+        <a href="/projects/<%= project.id %>/mark_filled" class="btn btn-info btn-sm">Mark Filled</i></a>
+        <a href="/delete_project/<%= project.id %>" class="btn btn-default btn-sm" rel="nofollow">Delete</i></a>
+        <% else %>
+        <% end %>
+        <% end %>
       </small>
     </div>
 

@@ -49,6 +49,10 @@ Rails.application.routes.draw do
   get "/projects/:id/edit", :controller => "projects", :action => "edit"
   post "/update_project/:id", :controller => "projects", :action => "update"
 
+  # MARK FILLED / MARK UNFILLED
+  get "/projects/:id/mark_filled", :controller => "projects", :action => "mark_filled"
+  get "/projects/:id/mark_unfilled", :controller => "projects", :action => "mark_unfilled"
+
   # DELETE
   get "/delete_project/:id", :controller => "projects", :action => "destroy"
   #------------------------------

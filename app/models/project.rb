@@ -13,7 +13,7 @@ class Project < ApplicationRecord
 
   validates :day_id, :presence => true
 
-  validates :description, :presence => true
+  validates :description, :presence => true, :length => { :minimum => 200, :maximum => 800 }
 
   validates :location_id, :presence => true
 

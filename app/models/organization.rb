@@ -8,7 +8,7 @@ class Organization < ApplicationRecord
 
   # Validations
 
-  validates :description, :presence => true
+  validates :description, :presence => true, :length => { :minimum => 700, :maximum => 900 }
 
   validates :location, :presence => true
 
