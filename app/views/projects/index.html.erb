@@ -12,8 +12,8 @@
     <br>As an organization, you can <b>create</b>, <b>edit</b>, <b>delete</b> your projects, or mark them <b>filled</b>.
     <br>Projects that have filled their capacity will still appear in that list, and you can revert the action later.
     <% else %>
-    <br>If you are interested in volunteering for one of those projects, please click on "Show" for more information.
-    <br>If you are an organization interested in posting volunteering opportunities, please sign up using the link in the top right corner.
+    <br><b>If you are a potential volunteer</b> for one of those projects, please browse the list below.
+    <br><b>If you are an organization</b> interested in posting volunteering opportunities, please sign in or sign up using the links in the top right corner.
     <% end %>
   </i>
 </div>
@@ -41,7 +41,7 @@
     </div>
     <div class="col-sm-offset-0 col-sm-5">
       <small>
-        <% if project.filled = 1 %>
+        <% if project.filled == 1 %>
         Number of Volunteers: <%= project.number_of_volunteers_required %><br>
         Location: <a href="/locations/<%= project.location.id %>"><%= project.location.neighborhood %></a><br>
         <%= truncate(project.description, :length => 200, :omission => '... (continued)') %><br><br>
