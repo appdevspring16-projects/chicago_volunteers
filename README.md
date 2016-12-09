@@ -1,24 +1,18 @@
-# README
+# Chicago Volunteers
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Purpose of this application:
 
-Things you may want to cover:
+* As a potential volunteer, I am able to browse open projects and apply to them;
+* As an organization, I am able to post projects and recruit volunteers.
 
-* Ruby version
+A demonstration of the project is available at the link below:
 
-* System dependencies
+https://drive.google.com/file/d/0BwMcMG_vCYxnV19lWURrdGc0TzQ/view?usp=sharing
 
-* Configuration
+First Draft link:
 
-* Database creation
+https://ideas.firstdraft.com/ideas/485
 
-* Database initialization
+Development project link:
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+https://github.com/firstdraft-projects/chicago_volunteers/projects/1

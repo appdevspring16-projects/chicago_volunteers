@@ -47,9 +47,9 @@
         <%= truncate(project.description, :length => 200, :omission => '... (continued)') %><br><br>
         <a href="/projects/<%= project.id %>" class="btn btn-primary btn-sm">Learn More & Sign-Up</a>
         <% if current_organization == project.organization %>
-        <a href="/projects/<%= project.id %>/edit" class="btn btn-warning btn-sm">Edit</i></a>
-        <a href="/projects/<%= project.id %>/mark_unfilled" class="btn btn-info btn-sm">Mark Unfilled</i></a>
-        <a href="/delete_project/<%= project.id %>" class="btn btn-default btn-sm" rel="nofollow">Delete</i></a>
+        <a href="/projects/<%= project.id %>/edit" class="btn btn-warning btn-sm">Edit</a>
+        <a href="/projects/<%= project.id %>/mark_unfilled" class="btn btn-info btn-sm">Mark Filled</a>
+        <a href="/delete_project/<%= project.id %>" class="btn btn-default btn-sm" rel="nofollow">Delete</a>
         <% else %>
         <% end %>
         <% else %>
@@ -59,9 +59,9 @@
         <%= truncate(project.description, :length => 200, :omission => '... (continued)') %></strike><br><br>
         This project has been marked filled by its organizer.</a>
         <% if current_organization == project.organization %><br><br>
-        <a href="/projects/<%= project.id %>/edit" class="btn btn-warning btn-sm">Edit</i></a>
-        <a href="/projects/<%= project.id %>/mark_filled" class="btn btn-info btn-sm">Mark Filled</i></a>
-        <a href="/delete_project/<%= project.id %>" class="btn btn-default btn-sm" rel="nofollow">Delete</i></a>
+        <a href="/projects/<%= project.id %>/edit" class="btn btn-warning btn-sm">Edit</a>
+        <a href="/projects/<%= project.id %>/mark_filled" class="btn btn-info btn-sm">Mark Unfilled</a>
+        <a href="/delete_project/<%= project.id %>" class="btn btn-default btn-sm" rel="nofollow">Delete</a>
         <% else %>
         <% end %>
         <% end %>

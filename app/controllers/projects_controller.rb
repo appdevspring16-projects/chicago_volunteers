@@ -96,9 +96,9 @@ class ProjectsController < ApplicationController
     @project.save
 
     if URI(request.referer).path == "/projects/#{@project.id}"
-      redirect_to("/", :notice => "Project market filled.")
+      redirect_to("/", :notice => "Project market unfilled.")
     else
-      redirect_back(:fallback_location => "/", :notice => "Project market filled.")
+      redirect_back(:fallback_location => "/", :notice => "Project market unfilled.")
     end
 
   end
@@ -109,9 +109,9 @@ class ProjectsController < ApplicationController
     @project.save
 
     if URI(request.referer).path == "/projects/#{@project.id}"
-      redirect_to("/", :notice => "Project marked unfilled.")
+      redirect_to("/", :notice => "Project marked filled.")
     else
-      redirect_back(:fallback_location => "/", :notice => "Project marked unfilled.")
+      redirect_back(:fallback_location => "/", :notice => "Project marked filled.")
     end
 
   end
